@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -35,4 +36,43 @@ public class SqlUtil {
 
         }
     }
+
+
+    //CRUD
+
+
+
+    private ResultSet allPr(){
+        executeStatement("select * from products");
+        try{
+            return statement.getResultSet();
+
+        }
+        catch(Exception e){
+            System.out.println("Nu s-a executat sintaxa SQL pentru afisare a produselor");
+            return null;
+        }
+
+    }
+    public ArrayList<Product>allProducts(){
+        ResultSet set=allPr();
+        ArrayList<Product> produse= new ArrayList <>();
+
+        try{
+            while(set.next()){
+                //public Product(String pname, int price, int qty)
+                produse.add(
+                        new Product(set.getString(2),
+                                   Integer.parseInt(set.getString(3)),
+                                           Integer.parseInt(set.getString(4))
+                                           ));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return produse;
+    }
+
+
 }
