@@ -8,10 +8,19 @@ public class Control {
     SqlUtil s = new SqlUtil();
 
     public Control(){ listaProduse=s.allProducts();}
+    public Product checkProduct(String pname, int price){
+        for(Product produse: listaProduse){
+            if(produse.getPname().equals(pname)&&produse.getPrice()==price){
+                return produse;
 
-    public void play() {
+            }
 
 
+        }
+        System.out.println("Produsul cautat nu exista in baza de date, va rugam sa verificatii detaliile intorduse!");
+        return null;
 
     }
+
+
 }

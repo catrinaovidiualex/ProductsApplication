@@ -73,6 +73,40 @@ public class SqlUtil {
         }
         return produse;
     }
+    public void addNewProduct(Product pr){
+        String insert="";
+        insert+=String.format("insert into products (pname,price,qty) values (");
+        insert+=String.format("'%s',%d,%d", pr.getPname(),pr.getPrice(),pr.getQty());
+        insert+=String.format(");");
+
+        executeStatement(insert);
+
+        System.out.println("Produsul a fost adaugat!");
+    }
+    public void updateProduct(String pname,int newPrice, int newQty){
+
+        String update="";
+        update=String.format("update products set price=%d",newPrice);
+
+        update+=String.format(",qty=%d",newQty);
+        update+=String.format("where pname='%s'",pname);
+
+        executeStatement(update);
+
+
+    }
+    public void deleteProuct(Product pr){
+        String stergere="";
+
+
+
+        String productName = pr.getPname();
+
+        stergere=String.format("delete from products where pname='%s'",productName);
+
+        executeStatement(stergere);
+    }
+
 
 
 }
