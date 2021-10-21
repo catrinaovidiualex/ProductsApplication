@@ -1,10 +1,8 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SqlUtil {
     private String JdbcURL = "jdbc:mysql://localhost:3306/productscrud?autoreconnect=true&useSSL=false";
@@ -39,7 +37,6 @@ public class SqlUtil {
 
 
     //CRUD
-
 
 
     private ResultSet allPr(){
@@ -106,6 +103,8 @@ public class SqlUtil {
 
         executeStatement(stergere);
     }
+
+
 
 
 
