@@ -86,7 +86,7 @@ public class SqlUtil {
         update=String.format("update products set price=%d",newPrice);
 
         update+=String.format(",qty=%d",newQty);
-        update+=String.format("where pname='%s'",pname);
+        update+=String.format(" where pname='%s'",pname);
 
         executeStatement(update);
 
